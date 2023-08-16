@@ -40,7 +40,7 @@ function commandPrompt() {
       {
         name: 'Print nodes',
         value: 'print-nodes',
-        description: "Print a list of the user's nodes."
+        description: "Print a list of the user's root and child nodes."
       },
       {
         name: 'Print info',
