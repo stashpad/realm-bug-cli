@@ -15,16 +15,17 @@ creates a tree of notes that the user is able to navigate and modify.
 Every user has a "root" note, which acts as the root of their note tree, and when 
 a user creates a new note, it must be added as a child to some other note.
 
-When we need to add a feature that requires the addition of a field to the schema,
-we first update the schema in App Services and then ship the schema update in our
-app to the end-users. This ensures that no documents in the database contain the
+When we need to add a feature that requires the addition of a field to the note object
+schema, we first update the schema in App Services and then ship the schema update in 
+our app to the end-users. This ensures that no documents in the database contain the
 newly added field before the schema is updated.
 
 We have noticed, however, that there is a short period of time (on the order of
 minutes) that begins once the schema change is published in App Services, during
 which any new notes that are created by an end user are eventually orphaned. This
 data loss typically happens a few minutes after the schema change is complete and
-some sync behavior occurs between the app in App Services and the database in Atlas.
+some (unknown to us) sync behavior occurs between the app in App Services and the
+database in Atlas.
 
 ## Live Reproduction
 
@@ -35,9 +36,8 @@ it is recommended to explore the code in this repo and the rest of this document
 steps I follow in this video are outlined below.
 
 I have sped up the "waiting" section of the video, which took about 3 minutes in real
-time. During those three minutes I'm refreshing the Atlas page to look at the Node
-collection and running "Print nodes" on the CLI to inspect the data that is present
-locally.
+time. During time I'm refreshing the Atlas page to look at the Node collection and 
+running "Print nodes" on the CLI to inspect the data that is present locally.
 
 https://github.com/stashpad/realm-bug-cli/assets/4733059/fb21f172-312e-4f44-8dc9-f8bc0c59780d
 
@@ -119,7 +119,7 @@ If you refresh the `Node` collection in Atlas you will now see that root node.
 ## CLI Tool Description
 
 The CLI tool in this repo provides a number of simple ways of interacting
-with the flexible sync Realm app that we set up in the next section.
+with the flexible sync Realm app that we set up in the previous section.
 
 On startup, the CLI tool will connect to the app and ensure that the current
 user has a root Node. You are then provided with the following options:
@@ -147,7 +147,7 @@ user has a root Node. You are then provided with the following options:
 
 **Run CLI tool**
 
-1. If the Node collection is not empty, clear it button running the CLI tool and choosing
+1. If the Node collection is not empty, clear it by running the CLI tool and choosing
    "Reset". The tool will exit after reset.
 2. If you have previously run the CLI tool, there will be a local directory called
    `mongodb-realm` in the repo's root directory. Delete it.
