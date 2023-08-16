@@ -168,3 +168,12 @@ info", you'll see that while the user has the correct total number of node docum
 the collection, the root node's `children` array is missing all of the ones that were
 added once the migration began. Those nodes have effectively been orphaned, and are no
 longer accessible to the user.
+
+## Additional Notes
+
+* In our testing we have only been able to reproduce this issue when the app is in
+  "production" mode in App Services. We have yet to see it happen in development mode.
+* While investigating in our own app, we printed out more detailed info during collection
+  changes, and noticed that Realm appears to swap out local data with new data in
+  batches of around 20 or so documents in the background some time after the schema
+  change is deployed.
