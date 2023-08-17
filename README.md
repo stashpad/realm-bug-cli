@@ -31,9 +31,13 @@ database in Atlas.
 
 The following video shows the data loss happen in real time, as demonstrated
 by using the tool in this repo and an app set up in App Services connected to
-a free Atlas deployment. To better understand what is happening in the video,
-it is recommended to explore the code in this repo and the rest of this document. The
-steps I follow in this video are outlined below.
+a free Atlas deployment. The scenario recreated in the video is the case in
+which our end users are actively creating new notes in our production app and 
+we add a new field to the note schema in the production database. 
+
+To better understand what is happening in the video, it is recommended to explore
+the code in this repo and the rest of this document. The steps I follow in this 
+video are outlined in [Reproduce the data loss](#reproduce-the-data-loss).
 
 I have sped up the "waiting" section of the video, which took about 3 minutes in real
 time. During time I'm refreshing the Atlas page to look at the Node collection and 
